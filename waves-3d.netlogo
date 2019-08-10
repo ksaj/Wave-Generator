@@ -1,0 +1,77 @@
+globals [
+  membrane-edge-x  ;; horizontal distance from center to edge of membrane
+  membrane-edge-y  ;; vertical distance from center to edge of membrane
+]
+
+turtles-own [
+  edge?            ;; are we on the edge of the membrane?
+  driver?          ;; are we part of the green driving plate?
+  x                ;; position on x axis in space
+  y                ;; position on y axis in space
+  z                ;; position on z axis in space
+  velocity         ;; velocity along z axis
+  neighbor-turtles ;; agentset of turtles adjacent to us
+]
+
+to setup
+  clear-all
+  set membrane-edge-x floor (max-pxcor / 1.5 )
+  set membrane-edge-y floor (max-pycor / 1.5 )
+  set-default-shape turtles "circle"
+  ask patches with [(abs pxcor <= membrane-edge-x) and
+                    (abs pycor <= membrane-edge-y) and
+                    ( pzcor = 0 ) ]
+    [ sprout 1
+        [
+          set edge? (abs xcor = membrane-edge-x) or
+                    (abs ycor = membrane-edge-y)
+          if edge? [ set color blue ]
+          set driver? (abs (xcor - driver-x) <= driver-size) and
+                      (abs (ycor - driver-y) <= driver-size)
+          if driver? [ set color green ]
+          set x xcor
+          set y ycor
+          set z 0
+          set velocity 0
+          recolor
+          ifelse driver? or edge?
+            [ set shape "square"
+              set size 0.5 ]
+            [ set shape "circle" ]
+          set heading 0
+          ] ]
+  ask turtles
+    [ set neighbor-turtles turtles-on neighbors4 ]
+  reset-ticks
+end
+
+to recolor  ;; turtle procedure
+  if not edge? and not driver?
+    [ set color scale-color red z -20 20 ]
+end
+
+to go
+  ask turtles with [not driver? and not edge?]
+    [ propagate ]
+  ask turtles
+    [ ifelse driver?
+        [ set z (driver-amplitude * (sin (0.1 * driver-frequency * ticks))) ]
+        [ set z (z + velocity)
+          recolor ]
+      set zcor z
+    ]
+  tick
+end
+
+to propagate   ;; turtle procedure -- propagates the wave from neighboring turtles
+  set velocity (velocity +
+                 (stiffness * 0.01 *
+                   (sum [z] of neighbor-turtles
+                    - 4 * z)))
+  set velocity (((1000 - friction) / 1000) * velocity)
+end
+
+
+; Copyright 1996 Uri Wilensky.
+; See Info tab for full copyright and license.
+
