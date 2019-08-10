@@ -64,6 +64,8 @@ Please cite the NetLogo software as:
 # COPYRIGHT AND LICENSE
 
 Copyright 1996 Uri Wilensky.
+
+![](http://creativecommons.org/licenses/by-nc-sa/4.0 "")
  
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 559 Nathan Abbott Way, Stanford, California 94305, USA.
 
