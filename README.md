@@ -1,4 +1,14 @@
+# Wave Generators in 2D and 3D
+
+I found it interesting to compare the 2D and 3D variations of this code, and have provided it with the original documentation and license below for others that might be interested in seeing what NetLogo code looks like, and how 2D and 3D representations differ in this languages. 
+
+You will need [NetLogo](https://ccl.northwestern.edu/netlogo) if you want to run these. They're included in the sample models, so you won't need to load these up from here. If you're interested in cellular automata, or computer representations of chemistry and physics (among others) NetLogo is the way to go. It's probably the simplest way to program Complex Systems. I suggest roaming through the Sample Models - they provide a tonne of them!
+
+Original documentation follows:
+------------------------------------------------
+
 # WHAT IS IT?
+
 This is a 3D version of the 2D model Wave Machine. This model simulates wave motion in a membrane. The four edges of the membrane are fixed to a frame. A green rectangular area represents a driver plate that moves up and down, exhibiting sinusoidal motion.
 
 # HOW TO USE IT
