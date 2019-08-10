@@ -5,6 +5,7 @@ I found it interesting to compare the 2D and 3D variations of this code, and hav
 You will need [NetLogo](https://ccl.northwestern.edu/netlogo) if you want to run these. They're included in the sample models, so you won't need to load these up from here. If you're interested in cellular automata, or computer representations of chemistry and physics (among others) NetLogo is the way to go. It's probably the simplest way to program Complex Systems. I suggest roaming through the Sample Models - they provide a tonne of them!
 
 Original documentation follows:
+
 ------------------------------------------------
 
 # WHAT IS IT?
